@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 14, 2025 at 06:04 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: sql200.infinityfree.com
+-- Generation Time: Nov 14, 2025 at 05:36 AM
+-- Server version: 11.4.7-MariaDB
+-- PHP Version: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `qubo_labs`
+-- Database: `if0_40415211_qubo_labs`
 --
 
 -- --------------------------------------------------------
@@ -464,7 +465,7 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`staff_id`, `staff_number`, `staff_name`, `password`, `department`, `session_token`, `last_login`, `created_at`) VALUES
-(1, 'REKH2699', 'Prof. Rekha P', 'Pro699', 'Computer Science', NULL, '2025-11-14 03:39:39', '2025-11-12 11:42:20'),
+(1, 'REKH2699', 'Prof. Rekha P', 'Pro699', 'Computer Science', NULL, '2025-11-14 05:51:37', '2025-11-12 11:42:20'),
 (2, 'ARFA2700', 'Prof. Arfa Bhandari', 'Pro700', 'Computer Science', NULL, NULL, '2025-11-12 11:42:20'),
 (3, 'HELE2701', 'Prof. Helan', 'Pro701', 'Computer Science', NULL, NULL, '2025-11-13 07:13:29'),
 (4, 'ARNA2702', 'Prof. Arnab Tah', 'Pro702', 'Computer Science', NULL, NULL, '2025-11-13 07:13:29'),
@@ -506,10 +507,10 @@ INSERT INTO `students` (`student_id`, `usn_number`, `student_name`, `password`, 
 (9, '1MJ23CS009', 'AKASH SURENDRA AINAPUR', 'Aka009', 1, NULL, NULL, '2025-11-13 07:10:20'),
 (10, '1MJ23CS010', 'AKSHATA SURESH VITTAPPANAVAR', 'Aks010', 1, NULL, NULL, '2025-11-13 07:10:20'),
 (11, '1MJ23CS011', 'AKSHAY H', 'Aks011', 1, NULL, NULL, '2025-11-13 07:10:20'),
-(12, '1MJ23CS012', 'ALVIN SONNY', 'Alv012', 1, '5a3e456437946a168a87b530114098fc2f3b564665ef001842e491496393a3ef', '2025-11-14 03:40:37', '2025-11-13 07:10:20'),
+(12, '1MJ23CS012', 'ALVIN SONNY', 'Alv012', 1, NULL, '2025-11-14 09:07:12', '2025-11-13 07:10:20'),
 (13, '1MJ23CS013', 'AMULYA G GOUDA', 'Amu013', 1, NULL, NULL, '2025-11-13 07:10:20'),
 (14, '1MJ23CS014', 'ANAGHASHREE G K', 'Ana014', 1, NULL, NULL, '2025-11-13 07:10:20'),
-(15, '1MJ23CS015', 'ANANYA SANJIV', 'Ana015', 1, NULL, '2025-11-14 03:43:48', '2025-11-13 07:10:20'),
+(15, '1MJ23CS015', 'ANANYA SANJIV', 'Ana015', 1, NULL, NULL, '2025-11-13 07:10:20'),
 (16, '1MJ23CS016', 'ANIKETHA H N', 'Ani016', 1, NULL, NULL, '2025-11-13 07:10:20'),
 (17, '1MJ23CS017', 'ANKITA CHARAN PAHADI', 'Ank017', 1, NULL, NULL, '2025-11-13 07:10:20'),
 (18, '1MJ23CS018', 'ANUSHREE D S', 'Anu018', 1, NULL, NULL, '2025-11-13 07:10:20'),
@@ -765,21 +766,21 @@ INSERT INTO `students` (`student_id`, `usn_number`, `student_name`, `password`, 
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `student_attendance_summary`
--- (See below for the actual view)
+-- Table structure for table `student_attendance_summary`
 --
+
 CREATE TABLE `student_attendance_summary` (
-`student_id` int(11)
-,`usn_number` varchar(20)
-,`student_name` varchar(100)
-,`class_id` int(11)
-,`subject_id` int(11)
-,`subject_name` varchar(100)
-,`subject_code` varchar(20)
-,`total_sessions` bigint(21)
-,`attended_sessions` bigint(21)
-,`attendance_percentage` decimal(26,2)
-);
+  `student_id` int(11) DEFAULT NULL,
+  `usn_number` varchar(20) DEFAULT NULL,
+  `student_name` varchar(100) DEFAULT NULL,
+  `class_id` int(11) DEFAULT NULL,
+  `subject_id` int(11) DEFAULT NULL,
+  `subject_name` varchar(100) DEFAULT NULL,
+  `subject_code` varchar(20) DEFAULT NULL,
+  `total_sessions` bigint(21) DEFAULT NULL,
+  `attended_sessions` bigint(21) DEFAULT NULL,
+  `attendance_percentage` decimal(26,2) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -3491,7 +3492,10 @@ INSERT INTO `subjects` (`subject_id`, `subject_code`, `subject_name`, `subject_t
 (9, 'CNL', 'Computer Networks Lab', 'lab', '2025-11-13 10:41:57'),
 (10, 'DVL', 'Data Visualization Lab', 'lab', '2025-11-13 10:41:57');
 
--- --------------------------------------------------------
+--
+-- Indexes for dumped tables
+--
+
 --
 -- Indexes for table `attendance_records`
 --
@@ -3575,7 +3579,7 @@ ALTER TABLE `attendance_records`
 -- AUTO_INCREMENT for table `attendance_sessions`
 --
 ALTER TABLE `attendance_sessions`
-  MODIFY `session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `session_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `classes`
